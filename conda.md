@@ -22,6 +22,7 @@ conda remove -n py36 --all
 
 ## その他
 .bashrcに下のものを記すことで簡単に環境起動(ubuntu、記したのちにsourceで読み込み)
+
 ```
 alias py36='source activate py36'
 ```

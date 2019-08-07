@@ -7,6 +7,7 @@
 - Overleaf v2 (overleaf)
 - git (git)
 - papers (papers)
+- ubuntu (ubuntu)
 
 ## 公開レポジトリ
 https://drive.google.com/drive/u/0/folders/1TBk5_A02mzHJDp6yYskbkk_8v6xhFybv

@@ -29,13 +29,15 @@
 settings.jsonに以下の内容を貼り付け
 ```
 {
-    "workbench.colorTheme": "One Dark Pro",
-    "workbench.iconTheme": "vscode-icons",
-    "editor.minimap.enabled": false,
     "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Material Theme High Contrast",
+    "editor.minimap.enabled": false,
     "git.confirmSync": false,
     "workbench.editor.enablePreview": false,
     "editor.renderWhitespace": "all",
+    "editor.wordWrap": "on",
+    "editor.mouseWheelZoom": true,
     "workbench.colorCustomizations": {
     // 現在行の背景色を、エディタの背景色よりも暗いグレーに
         "editor.lineHighlightBackground": "#000000",
