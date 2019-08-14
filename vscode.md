@@ -25,6 +25,19 @@
 - Live Server  
     HTML+javascriptの動作確認環境
 
+## 管理スペースが大きいという警告がある場合(only ubuntu)
+「Unable to watch for file changes in this large workspace. Please follow the instructions link to resolve this issue.(Visual Studio Code はこの大規模なワークスペース内のファイル変更を監視できません。この問題を解決するには、リンクの手順に従ってください。)」が出た場合、以下の内容を/etc/sysctl.confに追加、その後`sudo sysctl -p`を実行する。
+
+```
+fs.inotify.max_user_watches=524288
+```
+
+現在のメモリを確認するには、以下のコマンドを実行する。
+
+```
+cat /proc/sys/fs/inotify/max_user_watches
+```
+
 ## テーマの変更&各種設定
 settings.jsonに以下の内容を貼り付け
 ```
