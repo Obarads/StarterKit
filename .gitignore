@@ -1,2 +1,5 @@
 .vscode
 Samples
+__pycache__
+result
+

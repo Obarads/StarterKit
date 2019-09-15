@@ -11,7 +11,8 @@ import cv2
 from skimage import segmentation
 from distutils.util import strtobool
 
-#from models.kanezaki_net import KanezakiNet
+from model.model import KanezakiNet
+from exec_config import cmd_line_args
 
 def main(args=None):
     # Arguments
