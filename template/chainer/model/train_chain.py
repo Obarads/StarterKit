@@ -12,7 +12,7 @@ from chainercv.utils.bbox.bbox_iou import bbox_iou
 from chainercv.links.model.fpn.mask_utils import mask_to_segm
 from chainercv.links.model.fpn.misc import smooth_l1
 
-def converter1(batch, device=None):
+def to_tuple_converter(batch, device=None):
     # do not send data to gpu (device is ignored)
     return tuple(list(v) for v in zip(*batch))
 

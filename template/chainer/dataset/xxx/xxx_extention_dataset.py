@@ -10,12 +10,15 @@ from chainercv import utils
 from chainercv.links.model.fpn.misc import scale_img
 from chainercv import transforms
 
+from xxx_base_dataset import XxxBaseDataset
+
 #chainer.config.cv_resize_backend = "cv2"
 
-XX_LABEL_NAMES = ()
+XXX_LABEL_NAMES = ()
 
-class ChainerDataset(chainer.dataset.DatasetMixin):
+class XxxExtentionDataset(XxxBaseDataset):
     def __init__(self, debug=False):
+        super(XxxExtentionDataset, self).__init__(debug)
         self.length = 0
         self.debug = debug
         pass
@@ -24,12 +27,12 @@ class ChainerDataset(chainer.dataset.DatasetMixin):
         pass
         return self.length
 
-    def get_example(self, i):
+    def get_example(self, idx):
         if self.debug:
             debug_param = {}
             debug_param["greeting"] ="Hello world."
             self.debug_print(debug_param)
-        return i
+        return idx
 
     def debug_print(self,debug_param):
         for param_key in debug_param.keys():

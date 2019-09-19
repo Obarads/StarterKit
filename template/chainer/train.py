@@ -13,6 +13,7 @@ from distutils.util import strtobool
 
 from model.model import KanezakiNet
 from exec_config import cmd_line_args
+from dataset.xxx import xxx_extention_dataset
 
 def main(args=None):
     # Arguments

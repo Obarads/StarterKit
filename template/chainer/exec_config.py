@@ -6,6 +6,10 @@ import argparse
 from distutils.util import strtobool
 from chainerui.utils import save_args
 
+
+"""
+argumentation functions
+"""
 def cmd_line_args(args=None):
     parser = argparse.ArgumentParser(description='train model')
     parser = model_args(parser)
@@ -53,4 +57,6 @@ def env_args(parser):
 def temporary_args(parser):
     #parser.add_argument('--X', type=int, default=0, help='example')
     return parser
-    
+"""
+argumentation functions END
+"""
