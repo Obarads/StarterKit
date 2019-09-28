@@ -70,8 +70,6 @@ if has('mouse')
     endif
 endif
 
-
-
 if &term =~ "xterm"
     let &t_SI .= "\e[?2004h"
     let &t_EI .= "\e[?2004l"
@@ -86,65 +84,76 @@ if &term =~ "xterm"
 endif
 
 if has('vim_starting')
-    " 初回起動時のみruntimepathにNeoBundleのパスを指定する
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-
-    " NeoBundleが未インストールであればgit cloneする・・・・・・①
-    if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
-        echo "install NeoBundle..."
-        :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
-    endif
+    "set nocompatible
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+if !filereadable(expand('~/.vim/autoload/plug.vim'))
+    if !executable("curl")
+        echoerr "You have to install curl or first install vim-plug yourself!"
+        execute "q!"
+    endif
+    echo "Installing Vim-Plug..."
+    echo ""
+    silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    let g:not_finish_vimplug = "yes"
+    autocmd VimEnter * PlugInstall
+endif
 
+" plug用の拡張確認関数
 " インストールするVimプラグインを以下に記述
-" NeoBundle自身を管理
-NeoBundleFetch 'Shougo/neobundle.vim'
+" check the specified plugin is installed
+function s:is_plugged(name)
+    if exists('g:plugs') && has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
+        return 1
+    else
+        return 0
+    endif
+endfunction
+
+call plug#begin(expand('~/.vim/plugged'))
 "----------------------------------------------------------
 " ここに追加したいVimプラグインを記述する・・・・・・②
-
+" Note: Plugへの引数は絶対に二重引用符を使うな、単引用符を使え。例: Plug 'XX/YY.vim' <OK Plug "XX/YY.vim" <NG
 " カラースキームmolokai
-NeoBundle 'tomasr/molokai'
+Plug 'tomasr/molokai'
 " ステータスラインの表示内容強化
-NeoBundle 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 " インデントの可視化
-NeoBundle 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 " 末尾の全角と半角の空白文字を赤くハイライト
-NeoBundle 'bronson/vim-trailing-whitespace'
+Plug 'bronson/vim-trailing-whitespace'
 if has('lua') " lua機能が有効になっている場合・・・・・・①
     " コードの自動補完
-    NeoBundle 'Shougo/neocomplete.vim'
+    Plug 'Shougo/neocomplete.vim'
     " スニペットの補完機能
-    NeoBundle "Shougo/neosnippet"
+    Plug 'Shougo/neosnippet'
     " スニペット集
-    NeoBundle 'Shougo/neosnippet-snippets'
+    Plug 'Shougo/neosnippet-snippets'
 endif
 
 " 多機能セレクタ
-NeoBundle 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " CtrlPの拡張プラグイン. 関数検索
-NeoBundle 'tacahiroy/ctrlp-funky'
+Plug 'tacahiroy/ctrlp-funky'
 " CtrlPの拡張プラグイン. コマンド履歴検索
-NeoBundle 'suy/vim-ctrlp-commandline'
+Plug 'suy/vim-ctrlp-commandline'
 " 構文エラーチェック
-NeoBundle 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 " フォルダーのツリー構造を表示
-NeoBundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
+" pythonの拡張機能
+Plug 'davidhalter/jedi-vim'
+"Plug 'raimon49/reuirements.txt.vim',{'for':'requirements'}
 "----------------------------------------------------------
-call neobundle#end()
+call plug#end()
 
 " ファイルタイプ別のVimプラグイン/インデントを有効にする
 filetype plugin indent on
 
-" 未インストールのVimプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定・・・・・・③
-NeoBundleCheck
-
-
 "----------------------------------------------------------
 " molokaiの設定
 "----------------------------------------------------------
-if neobundle#is_installed('molokai') " molokaiがインストールされていれば
+if s:is_plugged('molokai') " molokaiがインストールされていれば
     colorscheme molokai " カラースキームにmolokaiを設定する
 endif
 
@@ -155,11 +164,31 @@ syntax enable " 構文に色を付ける
 " ステータスラインの設定
 "----------------------------------------------------------
 set laststatus=2 " ステータスラインを常に表示
-set showmode " 現在のモードを表示
-set showcmd " 打ったコマンドをステータスラインの下に表示
-set ruler " ステータスラインの右側にカーソルの現在位置を表示する
+"set noshowmode " 下に-- ModeName --を表示させない 
+set showcmd
+set ruler
+let g:lightline = {
+            \ 'colorscheme': 'wombat',
+            \ 'active': {
+            \ 'left': [ ['mode', 'paste'], ['readonly', 'filepath', 'modified'] ]
+            \ },
+            \ 'component_function':{
+            \ 'filepath': 'FilePath'
+            \ }
+            \ }
 
-if neobundle#is_installed('neocomplete.vim')
+function! FilePath()
+    if winwidth(0) > 90
+        return expand("%:s")
+    else
+        return expand("%:t")
+    endif
+endfunction
+
+"----------------------------------------------------------
+" neocomplete・neosnippetの設定
+"----------------------------------------------------------
+if s:is_plugged('neocomplete.vim')
     " Vim起動時にneocompleteを有効にする
     let g:neocomplete#enable_at_startup = 1
     " smartcase有効化. 大文字が入力されるまで大文字小文字の区別を無視する
@@ -195,7 +224,7 @@ let g:ctrlp_funky_matchtype = 'path'
 
 "----------------------------------------------------------
 " Syntasticの設定
-"----------------------------------------------------------
+"---------------------------------------------------------
 " 構文エラー行に「>>」を表示
 let g:syntastic_enable_signs = 1
 " 他のVimプラグインと競合するのを防ぐ
@@ -218,5 +247,25 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 "NERDTreeの設定
 "---------------------------------------------------------
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"---------------------------------------------------------
+" jedi-vim
+"--------------------------------------------------------
+let g:jedi#popup_on_dot = 0
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#show_call_signatures = "0"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#force_py_version = 3
+autocmd FileType python setlocal completeopt-=preview
+
 ```
+
 
