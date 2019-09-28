@@ -7,6 +7,7 @@
 - Markdown PDF: markdownのpdf化
 - Markdown+Math: markdown環境でlatexの数式を描くための環境
 - Live Server: HTML+javascriptの動作確認環境
+- vim: vim風に編集できる
 
 ## 管理スペースが大きいという警告がある場合(only ubuntu)
 「Unable to watch for file changes in this large workspace. Please follow the instructions link to resolve this issue.(Visual Studio Code はこの大規模なワークスペース内のファイル変更を監視できません。この問題を解決するには、リンクの手順に従ってください。)」が出た場合、以下の内容を/etc/sysctl.confに追加、その後`sudo sysctl -p`を実行する。
@@ -47,6 +48,16 @@ settings.jsonに以下の内容を貼り付け
     },
     "window.zoomLevel": 0,
     "editor.mouseWheelZoom": true,
-    "editor.wordWrap" : "on"
+    "editor.wordWrap" : "on",
+
+    // VIM setting
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.visualstar": true,
+    "vim.easymotion": true,
+    "vim.leader": "<space>",
+    "vim.whichwrap": "h,l,<,>,[,]",
+    "vim.useCtrlKeys": true,
 }
+
 ```
