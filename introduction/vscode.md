@@ -1,10 +1,10 @@
 # Visual Studio Code (vscode)
 ## 拡張機能
 - Shades of Purple: 紫デザイン
-- Material Icon Theme: アイコン
+- vscode-icons: アイコン
 - Python: python拡張
+- Babel JavaScript: Reactのために使用
 - Backet Pair Colorizer: 括弧の対応環境を色で理解できる
-- Markdown PDF: markdownのpdf化
 - Markdown+Math: markdown環境でlatexの数式を描くための環境
 - Live Server: HTML+javascriptの動作確認環境
 - vim: vim風に編集できる
@@ -26,8 +26,7 @@ cat /proc/sys/fs/inotify/max_user_watches
 settings.jsonに以下の内容を貼り付け
 ```json
 {
-    "workbench.colorTheme": "Shades of Purple",
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "vscode-icons",
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.minimap.enabled": false,
     "liveServer.settings.donotVerifyTags": true,
@@ -37,7 +36,7 @@ settings.jsonに以下の内容を貼り付け
     "workbench.editor.enablePreview": false,
     "editor.renderWhitespace": "all",
     "workbench.colorCustomizations": {
-    // 現在行の背景色を、エディタの背景色よりも暗いグレーに
+        // 現在行の背景色を、エディタの背景色よりも暗いグレーに
         "editor.lineHighlightBackground": "#000000",
         // 行番号を水色に
         "editorLineNumber.foreground": "#0ff",
@@ -48,8 +47,7 @@ settings.jsonに以下の内容を貼り付け
     },
     "window.zoomLevel": 0,
     "editor.mouseWheelZoom": true,
-    "editor.wordWrap" : "on",
-
+    "editor.wordWrap": "on",
     // VIM setting
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
@@ -58,6 +56,24 @@ settings.jsonに以下の内容を貼り付け
     "vim.leader": "<space>",
     "vim.whichwrap": "h,l,<,>,[,]",
     "vim.useCtrlKeys": true,
+    "workbench.colorTheme": "Shades of Purple",
+    "terminal.integrated.inheritEnv": false,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "name": "[MARKDOWN] - Color for Punctuation — Heading, `Code` and fenced ```code blocks```, **Bold**",
+                "scope": [
+                    "punctuation.definition.markdown",
+                    "punctuation.definition.raw.markdown",
+                    "punctuation.definition.heading.markdown",
+                    "punctuation.definition.bold.markdown",
+                    "punctuation.definition.italic.markdown"
+                ],
+                "settings": {
+                    "foreground": "#1efd00"
+                }
+            }
+        ]
+    }
 }
-
 ```
