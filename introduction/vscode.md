@@ -70,7 +70,7 @@ settings.jsonに以下の内容を貼り付け
                     "punctuation.definition.italic.markdown"
                 ],
                 "settings": {
-                    "foreground": "#1efd00"
+                    "foreground": "#ff5da0"
                 }
             }
         ]
