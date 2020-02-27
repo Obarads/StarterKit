@@ -14,8 +14,14 @@
 - https://qiita.com/colorrabbit/items/755cfbb0e97d48280775
 - https://qiita.com/Fendo181/items/8a5545cd7550bd9a3c91
 
+
 ## .vimrc
-```sh
+### .vimrcの注意点
+本資料ではVim-Plugを使用しているため、先に~/.vim/plugged/を作成しなくてはいけない。  
+また、nerdtreeも使用しているため、nerdtreeのgithubからインストールすること。
+
+### .vimrcの中身
+```bash
 set viminfo='20,\"1000 " コピー内容の増加
 
 set encoding=utf-8
