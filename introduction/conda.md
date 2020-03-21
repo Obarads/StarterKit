@@ -6,12 +6,12 @@ conda create -n py36 python=3.6 anaconda
 
 ## 環境起動
 ```
-source activate py36
+conda activate py36
 ```
 
 ## 環境から抜ける
 ```
-source deactivate
+conda deactivate
 ```
 
 ## 環境削除
