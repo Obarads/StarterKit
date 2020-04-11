@@ -1,7 +1,7 @@
 # ref: https://qiita.com/gogotealove/items/11f9e83218926211083a
 import sys, os
 
-def bit(data):
+def bit(data:list):
     N = len(data)
     res = []
     for i in range(2**N):
