@@ -2,4 +2,6 @@
 Samples
 __pycache__
 result
+*.ply
+*.pcd
 
