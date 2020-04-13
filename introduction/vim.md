@@ -18,7 +18,7 @@
 ## .vimrc
 ### .vimrcの注意点
 本資料ではVim-Plugを使用しているため、先に~/.vim/plugged/を作成しなくてはいけない。  
-また、nerdtreeも使用しているため、nerdtreeのgithubからインストールすること。
+また、nerdtreeも使用しているため、[nerdtreeのgithub](https://github.com/preservim/nerdtree)からインストールすること。
 
 ### .vimrcの中身
 ```bash
