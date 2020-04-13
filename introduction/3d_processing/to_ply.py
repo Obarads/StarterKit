@@ -1,5 +1,8 @@
 #
 # reference: https://github.com/loicland/superpoint_graph/blob/ssp%2Bspg/partition/provider.py
+# verified version: 
+# plyfile 0.7.1
+# numpy 1.18.1
 #
 
 import numpy as np

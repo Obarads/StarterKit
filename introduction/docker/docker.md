@@ -30,17 +30,29 @@ docker run -d -it --name $container_name $image_name
 ```
 ### 例
 ```sh
-docker run -d -it --name tcx --gpus all nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
+docker run -d -it --shm-size=16G -v /home/obarads/codebox/:/root/codebox/ --gpus all --name tc2 nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 ```
 
-Note: -dはデーモン化、つまりつけっぱなしにする。-itはわすれた。
+Note: -dはデーモン化、つまりつけっぱなしにする。-itはわすれた。--nameはコンテナ名
 
-### ホストとデータ共有する場合
+### ホストとデータ共有
 runの時点で設定する必要あり
 ```sh
-docker run -v [ホストディレクトリの絶対パス]:[コンテナの絶対パス] [イメージ名] [コマンド]
+docker run -v [ホストディレクトリの絶対パス]:[コンテナの絶対パス] [イメージ名]
 ```
 参考:[Yarimizu14, 【Docker】Dockerでホストのディレクトリをマウントする](https://qiita.com/Yarimizu14/items/52f4859027165a805630)
+
+### 共有メモリ増設
+これを使うことでpytorchのdataloaderのメモリ不足を回避できる。
+```sh
+docker run --shm-size=[数値][単位(G/M)] [イメージ名]
+```
+
+### GPUの使用
+GPUを使用できるようになる。これは[nvidia](https://github.com/NVIDIA/nvidia-docker/wiki/Installation-(Native-GPU-Support)#usage)のページを参照。
+```sh
+docker run --gpus all [イメージ名]
+```
 
 ## コンテナを起動したり止めたりそれにログインしたりする。
 スタート(起動)
