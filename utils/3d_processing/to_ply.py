@@ -18,7 +18,7 @@ def main():
         [3.0,5.0,2.0]
     ],dtype=np.float32)
     """
-    number_of_points = 8000
+    number_of_points = 2000
     rgb_channels = 3
     xyz_channels = 3
     xyz = np.random.rand(number_of_points, xyz_channels)

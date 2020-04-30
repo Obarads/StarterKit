@@ -23,6 +23,10 @@
 ```sh
 docker build . -t $image_name
 ```
+### 例
+```sh
+docker build . --shm-size=16g -t df1 
+```
 
 ## コンテナを作る
 ```sh
@@ -30,7 +34,7 @@ docker run -d -it --name $container_name $image_name
 ```
 ### 例
 ```sh
-docker run -d -it --shm-size=16G -v /home/obarads/codebox/:/root/codebox/ --gpus all --name tc2 nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
+docker run -d -it --shm-size=16g -v /home/hoge/codebox/:/root/codebox/ --gpus all --name tcx nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 ```
 
 Note: -dはデーモン化、つまりつけっぱなしにする。-itはわすれた。--nameはコンテナ名
