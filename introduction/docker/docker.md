@@ -21,11 +21,12 @@
 ## ビルドする
 以下のコマンドを入力する、$image_nameにイメージの名前をつける。
 ```sh
-docker build . -t $image_name
+docker build . --tag=$image_name
 ```
 ### 例
+この例の場合、このフォルダ内にあるDockerfile内のARGによって宣言された変数へ値を埋め込む。そのために、ホスト側にはUSER_IDなどの変数が宣言されているものとする。
 ```sh
-docker build . --shm-size=16g -t df1 
+docker build . --build-arg USER_ID=$USER_ID --build-arg GROUP_1_ID=$GROUP_1_ID --shm-size=16g --tag=coder
 ```
 
 ## コンテナを作る
@@ -34,7 +35,7 @@ docker run -d -it --name $container_name $image_name
 ```
 ### 例
 ```sh
-docker run -d -it --shm-size=16g -v /home/hoge/codebox/:/root/codebox/ --gpus all --name tcx nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
+docker run -d -it --shm-size=16g -v /home/hoge/codebox/:/home/coder/codebox/ -v /media/hoge/hhd/:/home/coder/databox/ --gpus all --name coder1 coder
 ```
 
 Note: -dはデーモン化、つまりつけっぱなしにする。-itはわすれた。--nameはコンテナ名

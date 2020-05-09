@@ -9,9 +9,20 @@ git \
 vim \
 libboost-all-dev \
 cmake
-RUN echo -e $"\n\
+
+ARG USER_ID
+ARG GROUP_1_ID
+
+RUN groupadd -g ${GROUP_1_ID} host-group
+RUN useradd -u ${USER_ID} -g ${GROUP_1_ID} -m coder
+RUN gpasswd -a coder sudo
+USER ${USER_ID}
+ENV HOME /home/coder
+ENV SHELL /bin/bash
+
+RUN echo "\n\
 export LANG=C.UTF-8 \n\
 export LANGUAGE=en_US \n\
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ' \n\
 alias py36='conda activate py36' \n\
-" >> /root/.bashrc
+" >> /home/coder/.bashrc
