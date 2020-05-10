@@ -35,7 +35,10 @@ docker run -d -it --name $container_name $image_name
 ```
 ### 例
 ```sh
-docker run -d -it --shm-size=16g -v /home/hoge/codebox/:/home/coder/codebox/ -v /media/hoge/hhd/:/home/coder/databox/ --gpus all --name coder1 coder
+docker run -d -it --shm-size=16g -v $CODEBOX:/home/coder/codebox/ -v $DATABOX:/home/coder/databox/ --gpus all --name coder1 coder
+```
+```sh
+docker run -d -it --shm-size=16g -v $CODEBOX:/home/coder/codebox/ -v $DATABOX:/home/coder/databox/ --gpus all --name coder2 coder-10.2
 ```
 
 Note: -dはデーモン化、つまりつけっぱなしにする。-itはわすれた。--nameはコンテナ名

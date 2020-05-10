@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
+FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
 RUN apt-get update && apt-get install -y \
 python3 \
@@ -8,7 +8,8 @@ curl \
 git \
 vim \
 libboost-all-dev \
-cmake
+cmake \
+sudo
 
 ARG USER_ID
 ARG GROUP_1_ID
@@ -16,6 +17,7 @@ ARG GROUP_1_ID
 RUN groupadd -g ${GROUP_1_ID} host-group
 RUN useradd -u ${USER_ID} -g ${GROUP_1_ID} -m coder
 RUN gpasswd -a coder sudo
+RUN echo "coder:qwer1234" | chpasswd
 USER ${USER_ID}
 ENV HOME /home/coder
 ENV SHELL /bin/bash
