@@ -20,6 +20,9 @@
 本資料ではVim-Plugを使用しているため、先に~/.vim/plugged/を作成しなくてはいけない。  
 また、nerdtreeも使用しているため、[nerdtreeのgithub](https://github.com/preservim/nerdtree)からインストールすること。
 
+### クリップボードにあるものをvimへ貼り付ける方法
+shift + Ins
+
 ### .vimrcの中身
 ```bash
 set viminfo='20,\"1000 " コピー内容の増加

@@ -45,6 +45,9 @@ settings.jsonに以下の内容を貼り付け
         "editorLineNumber.foreground": "#0ff",
         "editorWhitespace.foreground": "#5e5e5e",
         "editorIndentGuide.background": "#f00",
+        "tab.activeBackground": "#613c85",
+        "tab.activeForeground": "#ffffff",
+        "tab.unfocusedActiveBackground": "#191038",
         "statusBar.background": "#b01a31",
         "statusBar.noFolderBackground": "#b01a31",
         "statusBar.debuggingBackground": "#b01a31",
@@ -164,28 +167,42 @@ settings.jsonに以下の内容を貼り付け
 }
 ```
 
-## Debug example
+## vim用のキーコンフィグ
 ```json
-{
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Python: Current File",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "args": [
-                "--load_config=configs/hoge.yaml",
-                "--dataset_path=/hoge/dataset"
-            ]
-        }
-    ]
-}
+// Place your key bindings in this file to override the defaults
+[
+    {// move between editors
+        "key": "ctrl+h",
+        "command": "workbench.action.previousEditor"
+    },
+    {// move between editors
+        "key": "ctrl+l",
+        "command": "workbench.action.nextEditor"
+    },
+    {// move between editor and terminal
+        "key": "ctrl+k",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "editorTextFocus"
+    },
+    {// move between editor and terminal
+        "key": "ctrl+k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {// move between editor and sidebar
+        "key": "ctrl+j",
+        "command": "workbench.action.focusSideBar",
+        "when": "editorTextFocus"
+    },
+    {// move between editor and sidebar
+        "key": "ctrl+j",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "sideBarFocus"
+    }
+]
 ```
+
+
 
 ## 拡張機能の作成について
 publisherの作成済みなら、以下のコマンドをすることで拡張機能生成可能。この場合、ローカル環境に生成されるだけで、オンラインにはpublishされない。
