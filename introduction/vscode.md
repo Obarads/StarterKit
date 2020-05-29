@@ -99,6 +99,23 @@ settings.jsonに以下の内容を貼り付け
             "commands": [
                 "editor.action.insertLineAfter"
             ]
+        },
+        { // input indent
+            "before": [
+                "<Tab>"
+            ],
+            "after": [],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        { // input outdent
+            "before": [
+            ],
+            "after": [],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
         }
     ],
     "vim.statusBarColorControl": true,
