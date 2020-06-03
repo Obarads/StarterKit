@@ -25,21 +25,33 @@ fs.inotify.max_user_watches=524288
 cat /proc/sys/fs/inotify/max_user_watches
 ```
 
+## windowsのvscodeのターミナルでanaconda prompt(Powershell版)を利用
+- 以下の内容をsetting.jsonに追加する。
+  - Hogeの箇所を自分の環境にあったものに変換すること。
+- 以下の内容は、[_mekiさんの方法](https://qiita.com/_meki/items/5b4f06318f1a0986c55c)を参考にして作ったもの。
+```json
+"terminal.integrated.shellArgs.windows": [
+    "-ExecutionPolicy", 
+    "ByPass",
+    "-NoExit",
+    "-Command",
+    "& 'C:\\Users\\Hoge\\AppData\\Local\\Continuum\\anaconda3\\shell\\condabin\\conda-hook.ps1'; conda activate 'C:\\Users\\Hoge\\AppData\\Local\\Continuum\\anaconda3'"
+],
+```
+
 ## テーマの変更&各種設定
 settings.jsonに以下の内容を貼り付け
 ```json
 {
+    // Terminal
+    "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", 
+    // Workbench
+    "workbench.editor.enablePreview": false,
+    "workbench.startupEditor": "newUntitledFile",
     "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "Shades of Purple",
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.minimap.enabled": false,
-    "editor.lineNumbers": "relative",
-    "liveServer.settings.donotVerifyTags": true,
-    "liveServer.settings.donotShowInfoMsg": true,
-    "workbench.startupEditor": "newUntitledFile",
-    "git.confirmSync": false,
-    "workbench.editor.enablePreview": false,
-    "editor.renderWhitespace": "all",
     "workbench.colorCustomizations": {
         "editor.lineHighlightBackground": "#000000",
         "editorLineNumber.foreground": "#0ff",
@@ -55,10 +67,38 @@ settings.jsonに以下の内容を貼り付け
         "statusBar.debuggingForeground": "#fff",
         "statusBar.foreground": "#ffffff"
     },
+    // Window
     "window.zoomLevel": 0,
+    // Git
+    "git.confirmSync": false,
+    // Editor
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.minimap.enabled": false,
+    "editor.lineNumbers": "relative",
+    "editor.renderWhitespace": "all",
     "editor.mouseWheelZoom": true,
     "editor.wordWrap": "on",
-    //"python.linting.pylintArgs": ["--generated-members=torch.*"],
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "name": "[MARKDOWN] - Color for Punctuation — Heading, `Code` and fenced ```code blocks```, **Bold**",
+                "scope": [
+                    "punctuation.definition.markdown",
+                    "punctuation.definition.raw.markdown",
+                    "punctuation.definition.heading.markdown",
+                    "punctuation.definition.bold.markdown",
+                    "punctuation.definition.italic.markdown"
+                ],
+                "settings": {
+                    "foreground": "#ff5da0"
+                }
+            }
+        ]
+    },
+    // Extensions
+    // live Server setting
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
     // VIM setting
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
@@ -162,27 +202,7 @@ settings.jsonに以下の内容を貼り付け
     "vim.statusBarColors.surroundinputmode": [
         "#818596",
         "#161821"
-    ],
-    "terminal.integrated.inheritEnv": false,
-    "editor.tokenColorCustomizations": {
-        "textMateRules": [
-            {
-                "name": "[MARKDOWN] - Color for Punctuation — Heading, `Code` and fenced ```code blocks```, **Bold**",
-                "scope": [
-                    "punctuation.definition.markdown",
-                    "punctuation.definition.raw.markdown",
-                    "punctuation.definition.heading.markdown",
-                    "punctuation.definition.bold.markdown",
-                    "punctuation.definition.italic.markdown"
-                ],
-                "settings": {
-                    "foreground": "#ff5da0"
-                }
-            }
-        ]
-    },
-    "terminal.integrated.shell.linux": "/bin/bash",
-    "cmake.configureOnOpen": false
+    ]
 }
 ```
 
