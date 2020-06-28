@@ -108,6 +108,55 @@ settings.jsonに以下の内容を貼り付け
     "vim.easymotionKeys": "sdfghjkl",
     "vim.whichwrap": "h,l,<,>,[,]",
     "vim.useCtrlKeys": true,
+    "vim.visualModeKeyBindingsNonRecursive": [
+        { // sync vim undo with vscode undo
+            "before": [
+                "u"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "undo"
+                }
+            ]
+        },
+        { // sync vim redo with vscode redo
+            "before": [
+                "<C-r>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "redo"
+                }
+            ]
+        },
+        { // input enter on normal mode.
+            "before": [
+                "<Enter>"
+            ],
+            "after": [],
+            "commands": [
+                "editor.action.insertLineAfter"
+            ]
+        },
+        { // input indent
+            "before": [
+                "<Tab>"
+            ],
+            "after": [],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        { // input outdent
+            "before": [],
+            "after": [],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        }
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
         { // sync vim undo with vscode undo
             "before": [
@@ -150,8 +199,7 @@ settings.jsonに以下の内容を貼り付け
             ]
         },
         { // input outdent
-            "before": [
-            ],
+            "before": [],
             "after": [],
             "commands": [
                 "editor.action.outdentLines"
