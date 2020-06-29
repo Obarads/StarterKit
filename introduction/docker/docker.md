@@ -19,9 +19,9 @@
 3. コンテナを起動したり止めたりそれにログインしたりする。
 
 ## ビルドする
-以下のコマンドを入力する、$image_nameにイメージの名前をつける。
+以下のコマンドを入力する、$image_nameにイメージの名前をつける。\$Dockerfile_nameにはイメージ化するdockerfileのファイル名を入れる。入れない場合はDockerfileが選択される。
 ```sh
-docker build . --tag=$image_name
+docker build . -t=$image_name -f=$Dockerfile_name 
 ```
 ### 例
 この例の場合、このフォルダ内にあるDockerfile内のARGによって宣言された変数へ値を埋め込む。そのために、ホスト側にはUSER_IDなどの変数が宣言されているものとする。
