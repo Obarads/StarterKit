@@ -19,26 +19,23 @@
 3. コンテナを起動したり止めたりそれにログインしたりする。
 
 ## ビルドする
-以下のコマンドを入力する、$image_nameにイメージの名前をつける。\$Dockerfile_nameにはイメージ化するdockerfileのファイル名を入れる。入れない場合はDockerfileが選択される。
+以下は特に何も設定しない場合のコマンドである。同ディレクトリにあるDockerfileを使う。
 ```sh
-docker build . -t=$image_name -f=$Dockerfile_name 
+docker build . 
 ```
-### 例
-この例の場合、このフォルダ内にあるDockerfile内のARGによって宣言された変数へ値を埋め込む。そのために、ホスト側にはUSER_IDなどの変数が宣言されているものとする。
+### 普段使う例
+この例の場合、このフォルダ内にあるDockerfile内のARGによって宣言された変数へ値を埋め込む。そのために、ホスト側にはUSER_IDなどの変数が宣言されているものとする(これをする理由は、rootによる共有先のファイルのアクセス制限を回避するため)。また、`$image_name`は作成するイメージ名、`$Dockerfile_name`は指定したDockerfile名を入れる(つまり選択できる)ことで動作する。ちなみに、USER_IDは`id`コマンドで確認できる。
 ```sh
-docker build . --build-arg USER_ID=$USER_ID --build-arg GROUP_1_ID=$GROUP_1_ID --shm-size=16g --tag=coder
+docker build . --build-arg USER_ID=$USER_ID --build-arg GROUP_1_ID=$GROUP_1_ID --shm-size=16g -t=$image_name -f=$Dockerfile_name
 ```
 
 ## コンテナを作る
 ```sh
 docker run -d -it --name $container_name $image_name
 ```
-### 例
+### 普段使う例
 ```sh
-docker run -d -it --shm-size=16g -v $CODEBOX:/home/coder/codebox/ -v $DATABOX:/home/coder/databox/ --gpus all --name coder1 coder
-```
-```sh
-docker run -d -it --shm-size=16g -v $CODEBOX:/home/coder/codebox/ -v $DATABOX:/home/coder/databox/ --gpus all --name coder2 coder-10.2
+docker run -dit --shm-size=16g -v $CODEBOX:/home/coder/codebox/ -v $DATABOX:/home/coder/databox/ --gpus all --name coder2 coder-10.2
 ```
 
 Note: -dはデーモン化、つまりつけっぱなしにする。-itはわすれた。--nameはコンテナ名
