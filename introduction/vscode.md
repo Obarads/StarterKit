@@ -51,7 +51,6 @@ settings.jsonに以下の内容を貼り付け
     "workbench.editor.enablePreview": false,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Shades of Purple",
     "workbench.colorCustomizations": {
         "editor.lineHighlightBackground": "#000000",
         "editorLineNumber.foreground": "#0ff",
@@ -78,6 +77,7 @@ settings.jsonに以下の内容を貼り付け
     "editor.renderWhitespace": "all",
     "editor.mouseWheelZoom": true,
     "editor.wordWrap": "on",
+    "editor.rulers": [80],
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
@@ -109,6 +109,14 @@ settings.jsonに以下の内容を貼り付け
     "vim.whichwrap": "h,l,<,>,[,]",
     "vim.useCtrlKeys": true,
     "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["d"],
+            "after": ["\"", "_", "d"]
+        },
+        {
+            "before": ["p"],
+            "after": ["\"", "_", "d", "P"]
+        },
         { // sync vim undo with vscode undo
             "before": [
                 "u"
@@ -150,14 +158,20 @@ settings.jsonに以下の内容を貼り付け
             ]
         },
         { // input outdent
-            "before": [],
+            "before": [
+                "<Shift+Tab>"
+            ],
             "after": [],
             "commands": [
                 "editor.action.outdentLines"
             ]
-        }
+        },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["d"],
+            "after": ["\"", "_", "d"]
+        },
         { // sync vim undo with vscode undo
             "before": [
                 "u"
@@ -199,12 +213,14 @@ settings.jsonに以下の内容を貼り付け
             ]
         },
         { // input outdent
-            "before": [],
+            "before": [
+                "<Shift+Tab>"
+            ],
             "after": [],
             "commands": [
                 "editor.action.outdentLines"
             ]
-        }
+        },
     ],
     "vim.statusBarColorControl": true,
     "vim.statusBarColors.normal": [
@@ -250,7 +266,13 @@ settings.jsonに以下の内容を貼り付け
     "vim.statusBarColors.surroundinputmode": [
         "#818596",
         "#161821"
-    ]
+    ],
+    "pcviewer.rotateCoordinate": [
+        -90,
+        0,
+        0
+    ],
+    "pcviewer.pointDefaultSize": 0.005
 }
 ```
 
