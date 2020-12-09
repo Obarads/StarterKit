@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.1-cudnn7-devel-ubuntu16.04
+FROM tensorflow/tensorflow:1.14.0-gpu-py3-jupyter
 
 RUN apt-get update && apt-get install -y \
 python3 \
@@ -29,3 +29,4 @@ export LANGUAGE=en_US \n\
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ' \n\
 alias py36='conda activate py36' \n\
 " >> /home/coder/.bashrc
+

@@ -9,6 +9,7 @@ git \
 vim \
 libboost-all-dev \
 cmake \
+unzip \
 sudo
 
 ARG USER_ID
