@@ -32,3 +32,6 @@ echo "\n\
 su coder \n\
 " >> /root/.bashrc
 
+# install sudo
+apt install sudo
+
