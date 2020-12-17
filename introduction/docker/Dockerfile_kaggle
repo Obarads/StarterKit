@@ -1,0 +1,23 @@
+FROM gcr.io/kaggle-gpu-images/python:v93
+
+ARG UID
+ARG GID
+ARG USERNAME=coder
+
+RUN apt-get install -y sudo
+
+RUN groupadd -g ${GID} host-group
+RUN useradd -u ${UID} -g ${GID} -m ${USERNAME}
+RUN gpasswd -a ${USERNAME} sudo
+RUN echo "${USERNAME}:qwer1234" | chpasswd
+USER ${USERNAME}
+WORKDIR /home/${USERNAME}
+
+RUN echo "\n\
+export LANG=C.UTF-8 \n\
+export LANGUAGE=en_US \n\
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ' \n\
+" >> /home/coder/.bashrc
+
+
+

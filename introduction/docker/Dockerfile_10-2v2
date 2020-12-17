@@ -28,3 +28,8 @@ export LANG=C.UTF-8 \n\
 export LANGUAGE=en_US \n\
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ' \n\
 " >> /home/coder/.bashrc
+
+# add symbol links.
+RUN ln -s /mnt/codebox/ /home/coder/codebox
+RUN ln -s /mnt/databox/ /home/coder/databox
+

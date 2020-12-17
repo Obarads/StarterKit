@@ -58,6 +58,11 @@
 - ```sh
   docker run -dit --shm-size=16g -v $CODEBOX:/home/coder/codebox/ -v $DATABOX:/home/coder/databox/ --gpus all --name coder2 coder-10.2
   ```
+  ```sh
+  docker run -dit --shm-size=16g -v $CODEBOX:/mnt/codebox/ -v $DATABOX:/mnt/databox/ --gpus all -p 8888:8888 --name coder2 coder-10.2v2
+  ```
+
+
 ### Note
 - -dはデーモン化、つまりつけっぱなしにする。-itはわすれた。--nameはコンテナ名
 
