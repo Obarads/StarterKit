@@ -12,18 +12,43 @@
 - Live Share: vscodeに対する遠隔操作が可能
 - Remote系: dockerにつなぐため
 
+## python debugのlaunch.jsonのテンプレ
+- cwdとかargsとかの設定のやり方。
+  ```json
+  {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    // "env": {"PYTHONPATH": "${workspaceRoot}"},
+    "configurations": [
+
+        {
+            "name": "python example",
+            "type": "python",
+            "cwd": "${workspaceFolder}/examples/",
+            "request": "launch",
+            "program": "example1.py",
+            "console": "integratedTerminal",
+            "args": [
+                "dataset_root=/path/of/dataset/",
+                "test=True",
+            ]
+        },
+    ]
+  }
+  ```
+
 ## 管理スペースが大きいという警告がある場合(only ubuntu)
-「Unable to watch for file changes in this large workspace. Please follow the instructions link to resolve this issue.(Visual Studio Code はこの大規模なワークスペース内のファイル変更を監視できません。この問題を解決するには、リンクの手順に従ってください。)」が出た場合、以下の内容を/etc/sysctl.confに追加、その後`sudo sysctl -p`を実行する。
+- 「Unable to watch for file changes in this large workspace. Please follow the instructions link to resolve this issue.(Visual Studio Code はこの大規模なワークスペース内のファイル変更を監視できません。この問題を解決するには、リンクの手順に従ってください。)」が出た場合、以下の内容を/etc/sysctl.confに追加、その後`sudo sysctl -p`を実行する。
+  ```
+  fs.inotify.max_user_watches=524288
+  ```
 
-```
-fs.inotify.max_user_watches=524288
-```
-
-現在のメモリを確認するには、以下のコマンドを実行する。
-
-```
-cat /proc/sys/fs/inotify/max_user_watches
-```
+- 現在のメモリを確認するには、以下のコマンドを実行する。
+  ```
+  cat /proc/sys/fs/inotify/max_user_watches
+  ```
 
 ## windowsのvscodeのターミナルでanaconda prompt(Powershell版)を利用
 - 以下の内容をsetting.jsonに追加する。
