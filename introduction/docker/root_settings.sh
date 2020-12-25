@@ -7,4 +7,6 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[0
 # add symbol links.
 ln -s /mnt/codebox/ /root/codebox
 ln -s /mnt/databox/ /root/databox
-
+# for jupyter
+ln -s /mnt/codebox/ /home/codebox
+ln -s /mnt/databox/ /home/databox
