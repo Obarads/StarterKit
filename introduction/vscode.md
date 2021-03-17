@@ -348,3 +348,356 @@ vsce package
 ```sh
 vsce publish
 ```
+## 更に変更したもの
+### Setting
+```json
+{
+    "workbench.colorCustomizations": {
+        "editor.lineHighlightBackground": "#000000",
+        "editorLineNumber.foreground": "#0ff",
+        "editorWhitespace.foreground": "#5e5e5e",
+        "editorIndentGuide.background": "#f00",
+        "tab.activeBackground": "#613c85",
+        "tab.activeForeground": "#fff",
+        "tab.unfocusedActiveBackground": "#191038",
+        "statusBar.background": "#b01a31",
+        "statusBar.noFolderBackground": "#b01a31",
+        "statusBar.noFolderForeground": "#fff",
+        "statusBar.debuggingBackground": "#b01a31",
+        "statusBar.debuggingForeground": "#fff",
+        "statusBar.foreground": "#ffffff"
+    },
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.revealIfOpen": true,
+    "workbench.editor.showIcons": false, // 開いているエディターをアイコンで表示するかどうかを制御します。これには、アイコンのテーマを有効にする必要もあります。
+    "workbench.editor.highlightModifiedTabs": true, // 編集中のタブをハイライト
+    "workbench.editor.tabSizing": "shrink", // エディターのタブの大きさを制御します。常に完全なエディター ラベルを表示するのに足りるタブの大きさを維持するには 'fit' を設定します。すべてのタブを一度に表示するには利用可能なスペースが足りない場合に、タブを縮小可能にするには 'shrink' を設定します。
+    "workbench.editor.tabCloseButton": "off", 
+    // 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。'none' を選択するとエディターなしで開始します。'welcomepage' を選択するとウェルカム ページを開きます (既定)。'newuntitledfile' を選択すると新しい無題のファイルを開きます (空のワークスペースを開いているときのみ)。
+    // "workbench.startupEditor": "none",
+    // エディターを開く場所を制御します。'left' または 'right' を選択すると現在アクティブになっているエディターの左または右にエディターを開きます。'first' または 'last' を選択すると現在アクティブになっているエディターとは別個にエディターを開きます。
+    "workbench.editor.openPositioning": "first",
+    "workbench.activityBar.visible": true, // アクティビティバーでよけいなスペースを取られるのでfalse
+    "workbench.list.automaticKeyboardNavigation": false, // サイドバーのツリー検索でデフォルトの挙動をoffにする
+    "explorer.openEditors.visible": 0, // [開いているエディター] ウィンドウに表示するエディターの数。
+
+
+    // Window
+    "window.zoomLevel": 0,
+    // Git
+    "git.confirmSync": false,
+    // Editor
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.minimap.enabled": false,
+    "editor.lineNumbers": "relative",
+    "editor.renderWhitespace": "all",
+    "editor.mouseWheelZoom": true,
+    "editor.wordWrap": "on",
+    "editor.rulers": [80],
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "name": "[MARKDOWN] - Color for Punctuation — Heading, `Code` and fenced ```code blocks```, **Bold**",
+                "scope": [
+                    "punctuation.definition.markdown",
+                    "punctuation.definition.raw.markdown",
+                    "punctuation.definition.heading.markdown",
+                    "punctuation.definition.bold.markdown",
+                    "punctuation.definition.italic.markdown"
+                ],
+                "settings": {
+                    "foreground": "#ff5da0"
+                }
+            }
+        ]
+    },
+    // Extensions
+    // live Server setting
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    // VIM setting
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.visualstar": true,
+    "vim.easymotion": true,
+    "vim.leader": "<space>",
+    "vim.easymotionKeys": "sdfghjkl",
+    "vim.whichwrap": "h,l,<,>,[,]",
+    "vim.useCtrlKeys": true,
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["d"],
+            "after": ["\"", "_", "d"]
+        },
+        {
+            "before": ["p"],
+            "after": ["\"", "_", "d", "P"]
+        },
+        { // sync vim undo with vscode undo
+            "before": [
+                "u"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "undo"
+                }
+            ]
+        },
+        { // sync vim redo with vscode redo
+            "before": [
+                "<C-r>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "redo"
+                }
+            ]
+        },
+        { // input enter on normal mode.
+            "before": [
+                "<Enter>"
+            ],
+            "after": [],
+            "commands": [
+                "editor.action.insertLineAfter"
+            ]
+        },
+        { // input indent
+            "before": [
+                "<Tab>"
+            ],
+            "after": [],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        { // input outdent
+            "before": [
+                "<Shift+Tab>"
+            ],
+            "after": [],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["d"],
+            "after": ["\"", "_", "d"]
+        },
+        { // sync vim undo with vscode undo
+            "before": [
+                "u"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "undo"
+                }
+            ]
+        },
+        { // sync vim redo with vscode redo
+            "before": [
+                "<C-r>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "redo"
+                }
+            ]
+        },
+        { // input enter on normal mode.
+            "before": [
+                "<Enter>"
+            ],
+            "after": [],
+            "commands": [
+                "editor.action.insertLineAfter"
+            ]
+        },
+        { // input indent
+            "before": [
+                "<Tab>"
+            ],
+            "after": [],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        { // input outdent
+            "before": [
+                "<Shift+Tab>"
+            ],
+            "after": [],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+    ],
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": [
+        "#0050c7",
+        "#ffffff"
+    ],
+    "vim.statusBarColors.insert": [
+        "#176332",
+        "#ffffff"
+    ],
+    "vim.statusBarColors.visual": [
+        "#b01a31",
+        "#ffffff"
+    ],
+    "vim.statusBarColors.visualline": [
+        "#b01a31",
+        "#ffffff"
+    ],
+    "vim.statusBarColors.visualblock": [
+        "#b01a31",
+        "#ffffff"
+    ],
+    "vim.statusBarColors.replace": [
+        "#E2A478",
+        "#161821"
+    ],
+    "vim.statusBarColors.commandlineinprogress": [
+        "#285366",
+        "#ffffff"
+    ],
+    "vim.statusBarColors.searchinprogressmode": [
+        "#572e85",
+        "#ffffff"
+    ],
+    "vim.statusBarColors.easymotionmode": [
+        "#fcff3b",
+        "#1c1c1c"
+    ],
+    "vim.statusBarColors.easymotioninputmode": [
+        "#ffbb3d",
+        "#161821"
+    ],
+    "vim.statusBarColors.surroundinputmode": [
+        "#818596",
+        "#161821"
+    ],
+    "pcviewer.rotateCoordinate": [
+        -90,
+        0,
+        0
+    ],
+    "pcviewer.pointDefaultSize": 0.04,
+    "files.associations": {
+        "*.cuh": "cpp",
+        "*.cu": "cpp"
+    },
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "jupyter.askForKernelRestart": false,
+    "jupyter.widgetScriptSources": [
+        "jsdelivr.com",
+        "unpkg.com"
+    ],
+    // "workbench.colorTheme": "Shades of Purple",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.startupEditor": "newUntitledFile",
+    "autoDocstring.docstringFormat": "numpy"
+}
+```
+
+### keymap
+```json
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+u ctrl+i",
+        "command": "editor.action.goToImplementation",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+u ctrl+d",
+        "command": "editor.action.goToDeclaration",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+u ctrl+u",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "cursorRight",
+        "when": "editorTextFocus && !editorReadOnly"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "cursorLeft",
+        "when": "editorTextFocus && !editorReadOnly"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "cursorDown",
+        "when": "editorTextFocus && !editorReadOnly"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "cursorUp",
+        "when": "editorTextFocus && !editorReadOnly"
+    },
+    // 候補のフォーカスを下へ移動
+    {
+        "key": "ctrl+n",
+        "command": "selectNextSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    // 候補のフォーカスを上へ移動
+    {
+        "key": "ctrl+i",
+        "command": "selectPrevSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {// move between editors
+        "key": "ctrl+w ctrl+h",
+        "command": "workbench.action.previousEditor"
+    },
+    {// move between editors
+        "key": "ctrl+w ctrl+l",
+        "command": "workbench.action.nextEditor"
+    },
+    {// move between editor and terminal
+        "key": "ctrl+w ctrl+k",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "editorTextFocus"
+    },
+    {// move between editor and terminal
+        "key": "ctrl+w ctrl+k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {// move between editor and sidebar
+        "key": "ctrl+w ctrl+j",
+        "command": "workbench.action.focusSideBar",
+        "when": "editorTextFocus"
+    },
+    {// move between editor and sidebar
+        "key": "ctrl+w ctrl+j",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "sideBarFocus"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "workbench.action.moveEditorToNextGroup",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+h",
+        "command": "workbench.action.moveEditorToPreviousGroup",
+        "when": "editorTextFocus"
+    }
+]
+```
