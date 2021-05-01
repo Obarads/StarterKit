@@ -27,7 +27,7 @@
   - ちなみに、USER_IDは`id`コマンドで確認できる。
 - `$image_name`は作成するイメージ名、`$Dockerfile_name`は指定したDockerfile名を入れる(つまり選択できる)ことで動作する。
   ```sh
-  docker build . --build-arg USER_ID=$USER_ID --build-arg GROUP_1_ID=$GROUP_1_ID --shm-size=16g -t=$image_name -f=$Dockerfile_name
+  docker build . --build-arg USER_ID=$USER_ID --build-arg GROUP_1_ID=$GROUP_1_ID --shm-size=16g -t=$image_name:$version -f=$Dockerfile_name
   ```
 
 ## コンテナを作って動作させる
@@ -61,8 +61,10 @@
   ```sh
   docker run -dit --shm-size=16g -v $CODEBOX:/mnt/codebox/ -v $DATABOX:/mnt/databox/ --gpus all -p 8888:8888 --name coder2 coder-10.2v2
   ```
-
-
+- 改修版(11-1以降改修済み)
+  ```sh
+  docker run -dit --shm-size=16g -v $CODEBOX:/home/coder/codebox/ -v $DATABOX2:/home/coder/databox2/ -v $DATABOX1:/home/coder/databox1/ --gpus all -p 8888:8888 --name coder coder-11.1
+  ```
 ### Note
 - -dはデーモン化、つまりつけっぱなしにする。-itはわすれた。--nameはコンテナ名
 

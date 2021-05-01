@@ -72,10 +72,21 @@ settings.jsonに以下の内容を貼り付け
     "terminal.integrated.inheritEnv": false,
     "terminal.integrated.shell.linux": "/bin/bash",
     "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", 
+
     // Workbench
-    "workbench.editor.enablePreview": false,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.iconTheme": "vscode-icons",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.showIcons": false, // 開いているエディターをアイコンで表示するかどうかを制御します。これには、アイコンのテーマを有効にする必要もあります。
+    "workbench.editor.highlightModifiedTabs": true, // 編集中のタブをハイライト
+    "workbench.editor.tabSizing": "shrink", // エディターのタブの大きさを制御します。常に完全なエディター ラベルを表示するのに足りるタブの大きさを維持するには 'fit' を設定します。すべてのタブを一度に表示するには利用可能なスペースが足りない場合に、タブを縮小可能にするには 'shrink' を設定します。
+    "workbench.editor.tabCloseButton": "off", 
+    // 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。'none' を選択するとエディターなしで開始します。'welcomepage' を選択するとウェルカム ページを開きます (既定)。'newuntitledfile' を選択すると新しい無題のファイルを開きます (空のワークスペースを開いているときのみ)。
+    // "workbench.startupEditor": "none",
+    // エディターを開く場所を制御します。'left' または 'right' を選択すると現在アクティブになっているエディターの左または右にエディターを開きます。'first' または 'last' を選択すると現在アクティブになっているエディターとは別個にエディターを開きます。
+    "workbench.editor.openPositioning": "first",
+    "workbench.activityBar.visible": true, // アクティビティバーでよけいなスペースを取られるのでfalse
+    "workbench.list.automaticKeyboardNavigation": false, // サイドバーのツリー検索でデフォルトの挙動をoffにする
     "workbench.colorCustomizations": {
         "editor.lineHighlightBackground": "#000000",
         "editorLineNumber.foreground": "#0ff",
@@ -91,10 +102,13 @@ settings.jsonに以下の内容を貼り付け
         "statusBar.debuggingForeground": "#fff",
         "statusBar.foreground": "#ffffff"
     },
+
+    // explorer
+    "explorer.openEditors.visible": 0, // [開いているエディター] ウィンドウに表示するエディターの数。
+
     // Window
     "window.zoomLevel": 0,
-    // Git
-    "git.confirmSync": false,
+
     // Editor
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.minimap.enabled": false,
@@ -120,10 +134,15 @@ settings.jsonに以下の内容を貼り付け
             }
         ]
     },
+
     // Extensions
     // live Server setting
     "liveServer.settings.donotVerifyTags": true,
     "liveServer.settings.donotShowInfoMsg": true,
+
+    // Git
+    "git.confirmSync": false,
+
     // VIM setting
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
@@ -292,6 +311,8 @@ settings.jsonに以下の内容を貼り付け
         "#818596",
         "#161821"
     ],
+
+    // pcviewer
     "pcviewer.rotateCoordinate": [
         -90,
         0,
