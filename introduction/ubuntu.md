@@ -1,4 +1,8 @@
 # linux
+## サイト集
+- Ubuntuパッケージ検索: [https://packages.ubuntu.com/ja/](https://packages.ubuntu.com/ja/)
+
+
 ## コマンド集
 ### パッケージの依存関係を解決するインストールコマンド
 ```bash

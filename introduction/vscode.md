@@ -340,26 +340,6 @@ settings.jsonに以下の内容を貼り付け
         "key": "ctrl+u ctrl+u",
         "command": "workbench.action.quickOpen"
     },
-    {
-        "key": "ctrl+l",
-        "command": "cursorRight",
-        "when": "editorTextFocus && !editorReadOnly"
-    },
-    {
-        "key": "ctrl+h",
-        "command": "cursorLeft",
-        "when": "editorTextFocus && !editorReadOnly"
-    },
-    {
-        "key": "ctrl+j",
-        "command": "cursorDown",
-        "when": "editorTextFocus && !editorReadOnly"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "cursorUp",
-        "when": "editorTextFocus && !editorReadOnly"
-    },
     // 候補のフォーカスを下へ移動
     {
         "key": "ctrl+n",
@@ -373,30 +353,30 @@ settings.jsonに以下の内容を貼り付け
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
     {// move between editors
-        "key": "ctrl+w ctrl+h",
+        "key": "ctrl+h",
         "command": "workbench.action.previousEditor"
     },
     {// move between editors
-        "key": "ctrl+w ctrl+l",
+        "key": "ctrl+l",
         "command": "workbench.action.nextEditor"
     },
     {// move between editor and terminal
-        "key": "ctrl+w ctrl+k",
+        "key": "ctrl+k",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "editorTextFocus"
     },
     {// move between editor and terminal
-        "key": "ctrl+w ctrl+k",
+        "key": "ctrl+k",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     },
     {// move between editor and sidebar
-        "key": "ctrl+w ctrl+j",
+        "key": "ctrl+j",
         "command": "workbench.action.focusSideBar",
         "when": "editorTextFocus"
     },
     {// move between editor and sidebar
-        "key": "ctrl+w ctrl+j",
+        "key": "ctrl+j",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "sideBarFocus"
     },
