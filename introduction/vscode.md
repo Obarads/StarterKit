@@ -69,13 +69,15 @@ settings.jsonに以下の内容を貼り付け
 ```json
 {
     // Terminal
+    "terminal.integrated.tabs.enabled": false,
     "terminal.integrated.inheritEnv": false,
-    "terminal.integrated.shell.linux": "/bin/bash",
-    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", 
+    // "terminal.integrated.shell.linux": "/bin/bash",
+    // "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", 
 
     // Workbench
     "workbench.startupEditor": "newUntitledFile",
     "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Shades of Purple",
     "workbench.editor.enablePreview": false,
     "workbench.editor.showIcons": false, // 開いているエディターをアイコンで表示するかどうかを制御します。これには、アイコンのテーマを有効にする必要もあります。
     "workbench.editor.highlightModifiedTabs": true, // 編集中のタブをハイライト
@@ -84,9 +86,11 @@ settings.jsonに以下の内容を貼り付け
     // 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。'none' を選択するとエディターなしで開始します。'welcomepage' を選択するとウェルカム ページを開きます (既定)。'newuntitledfile' を選択すると新しい無題のファイルを開きます (空のワークスペースを開いているときのみ)。
     // "workbench.startupEditor": "none",
     // エディターを開く場所を制御します。'left' または 'right' を選択すると現在アクティブになっているエディターの左または右にエディターを開きます。'first' または 'last' を選択すると現在アクティブになっているエディターとは別個にエディターを開きます。
-    "workbench.editor.openPositioning": "first",
-    "workbench.activityBar.visible": true, // アクティビティバーでよけいなスペースを取られるのでfalse
+    "workbench.editor.openPositioning": "first", // アクティビティバーでよけいなスペースを取られるのでfalse
     "workbench.list.automaticKeyboardNavigation": false, // サイドバーのツリー検索でデフォルトの挙動をoffにする
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    }
     "workbench.colorCustomizations": {
         "editor.lineHighlightBackground": "#000000",
         "editorLineNumber.foreground": "#0ff",
@@ -108,9 +112,12 @@ settings.jsonに以下の内容を貼り付け
 
     // Window
     "window.zoomLevel": 0,
+    "window.titleBarStyle": "custom",
+    "window.customMenuBarAltFocus": false,
 
     // Editor
     "editor.multiCursorModifier": "ctrlCmd",
+    "editor.renderControlCharacters": true,
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
     "editor.renderWhitespace": "all",
@@ -139,6 +146,9 @@ settings.jsonに以下の内容を貼り付け
     // live Server setting
     "liveServer.settings.donotVerifyTags": true,
     "liveServer.settings.donotShowInfoMsg": true,
+
+    // python
+    "python.showStartPage": false,
 
     // Git
     "git.confirmSync": false,
