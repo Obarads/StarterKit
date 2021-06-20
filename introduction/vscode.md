@@ -90,7 +90,7 @@ settings.jsonに以下の内容を貼り付け
     "workbench.list.automaticKeyboardNavigation": false, // サイドバーのツリー検索でデフォルトの挙動をoffにする
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
-    }
+    },
     "workbench.colorCustomizations": {
         "editor.lineHighlightBackground": "#000000",
         "editorLineNumber.foreground": "#0ff",
@@ -104,8 +104,9 @@ settings.jsonに以下の内容を貼り付け
         "statusBar.noFolderForeground": "#fff",
         "statusBar.debuggingBackground": "#b01a31",
         "statusBar.debuggingForeground": "#fff",
-        "statusBar.foreground": "#ffffff"
-    },
+        "statusBar.foreground": "#ffffff",
+        "terminal.foreground": "#c0c0c0"
+},
 
     // explorer
     "explorer.openEditors.visible": 0, // [開いているエディター] ウィンドウに表示するエディターの数。
@@ -361,6 +362,26 @@ settings.jsonに以下の内容を貼り付け
         "key": "ctrl+i",
         "command": "selectPrevSuggestion",
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "alt+l",
+        "command": "cursorRight",
+        "when": "editorTextFocus && !editorReadOnly"
+    },
+    {
+        "key": "alt+h",
+        "command": "cursorLeft",
+        "when": "editorTextFocus && !editorReadOnly"
+    },
+    {
+        "key": "alt+j",
+        "command": "cursorDown",
+        "when": "editorTextFocus && !editorReadOnly"
+    },
+    {
+        "key": "alt+k",
+        "command": "cursorUp",
+        "when": "editorTextFocus && !editorReadOnly"
     },
     {// move between editors
         "key": "ctrl+h",
